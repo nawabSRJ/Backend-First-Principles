@@ -1,0 +1,25 @@
+Backend
+    - Models
+        - Always import mongoose package first
+        - Declare schema using new Schema method of mongoose with new keyword:
+        example : const clientSchema = new mongoose.Schema({keys:value definitions})
+        - The schema variable or object is packaged into a Model and then that Model is exported
+    
+    - Routing/Routes
+        - Always make sure the correct REST API Method is used like do NOT use router.update(), there is no method like that, use Put or Patch accordingly.
+        - Always make sure to double check the final route path by checking for extra slash('/') either in the server file or the router file.
+        - At the end of the file always remember to export the router like 'export default router'.
+
+    - Config
+        - Always remember to add both cors and db configuration files.
+        - In the cors file defined the 'corsOptions' which is an object and then import that in the server file and pass it to cors(). Remember since the corsOptions is already an object so you only need to write : 
+        app.use(cors(corsOptions)) and NOT app.use(cors({corsOptions})).
+        - For the db file, make sure to put the connection string in the env file and access it using 'process.env.MONGO_URI'
+
+
+
+Frontend
+    - Handling CRUD Code
+        - Always use try-catch intuitively
+        - Always make sure that before updating the asset or part of the UI/frontend you place a response check. This prevents faulty API responses from breaking your UI state.
+        - If the function called upon 'onClick' has to take arguments then make sure to call the handler in it like : onClick={() => deletePost(post._id)}, if there is no argument then like onClick={handleAddPost}
